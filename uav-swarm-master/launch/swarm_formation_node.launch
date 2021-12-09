@@ -1,0 +1,37 @@
+<launch>
+
+	<param name="n_drones" value="3"/>
+	<param name="simulation" value="false"/>
+	<param name="kp" type="double" value="1.0"/>
+	<param name="kf" type="double" value="-1.1"/>
+	<param name="kd" type="double" value="-0.55"/>
+	<node name="offb_node_0" pkg="uav-swarm" type="offb_node_formation_control" output="screen" >
+		<param name="n_drone" value="0"/>
+		<param name="waypoint_reached" value="false"/>
+		<remap from="mavros/state" to="uav0/mavros/state" />
+		<remap from="mavros/local_position/pose" to="uav0/mavros/local_position/pose" />
+		<remap from="mavros/setpoint_raw/local" to="uav0/mavros/setpoint_raw/local" />
+		<remap from="mavros/cmd/arming" to="uav0/mavros/cmd/arming" />
+		<remap from="mavros/set_mode" to="uav0/mavros/set_mode" />
+	</node>
+	
+	<node name="offb_node_1" pkg="uav-swarm" type="offb_node_formation_control" output="screen">
+		<param name="n_drone" value= "1" />
+		<param name="waypoint_reached" value="false"/>
+		<remap from="mavros/state" to="uav1/mavros/state" />
+		<remap from="mavros/local_position/pose" to="uav1/mavros/local_position/pose" />
+		<remap from="mavros/setpoint_raw/local" to="uav1/mavros/setpoint_raw/local" />
+		<remap from="mavros/cmd/arming" to="uav1/mavros/cmd/arming" />
+		<remap from="mavros/set_mode" to="uav1/mavros/set_mode" />
+	</node>
+
+	<node name="offb_node_2" pkg="uav-swarm" type="offb_node_formation_control" output="screen">
+		<param name="n_drone" value= "2" />
+		<param name="waypoint_reached" value="false"/>
+		<remap from="mavros/state" to="uav2/mavros/state" />
+		<remap from="mavros/local_position/pose" to="uav2/mavros/local_position/pose" />
+		<remap from="mavros/setpoint_raw/local" to="uav2/mavros/setpoint_raw/local" />
+		<remap from="mavros/cmd/arming" to="uav2/mavros/cmd/arming" />
+		<remap from="mavros/set_mode" to="uav2/mavros/set_mode" />
+	</node>
+</launch>
